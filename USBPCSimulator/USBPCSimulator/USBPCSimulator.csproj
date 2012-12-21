@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibUsbDotNet">
-      <HintPath>..\..\..\..\..\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>
+      <HintPath>C:\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,8 +52,10 @@
   <ItemGroup>
     <Compile Include="ControlRequestEventArgs.cs" />
     <Compile Include="DescriptorRequestedEventArgs.cs" />
+    <Compile Include="Devices\DeviceForwarder.cs" />
     <Compile Include="Devices\HIDKeyboard.cs" />
     <Compile Include="Devices\MassStorageDevice.cs" />
+    <Compile Include="Devices\SerialAdapter.cs" />
     <Compile Include="EndpointInformation.cs" />
     <Compile Include="IncomingDataEventArgs.cs" />
     <Compile Include="LogEventArgs.cs" />

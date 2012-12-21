@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using USBSimulator;
+using USBSimulator.Devices;
 
 namespace Driver
 {
@@ -13,7 +14,7 @@ namespace Driver
     [STAThread]
     static void Main()
     {
-      Logger.Level = Logger.LoggingLevel.Normal;
+      Logger.Level = Logger.LoggingLevel.Verbose;
       Logger.LogEntryAdded += Logger_LogEntryAdded;
 
       _device = new USBSimulatorDevice();
@@ -23,6 +24,8 @@ namespace Driver
         Console.WriteLine("Specify device to simulate:");
         Console.WriteLine("\t1: Mass storage device");
         Console.WriteLine("\t2: HID keyboard");
+        Console.WriteLine("\t3: Forwarder");
+        Console.WriteLine("\t4: Serial adapter");
         Console.WriteLine();
 
         bool done = false;
@@ -37,6 +40,12 @@ namespace Driver
               break;
             case ConsoleKey.D2:
               _device.CurrentDevice = new HIDKeyboard(0xDEAD, 0xBEEF);
+              break;
+            case ConsoleKey.D3:
+              _device.CurrentDevice = new DeviceForwarder(0x0451, 0xE004);
+              break;
+            case ConsoleKey.D4:
+              _device.CurrentDevice = new SerialAdapter();
               break;
             default:
               done = false;

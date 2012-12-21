@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace USBSimulator
+namespace USBSimulator.Devices
 {
   //This code makes quite a few assumptions about how commands are logically broken up
   //  on the bulk endpoints, but it's probably okay.
@@ -56,6 +56,11 @@ namespace USBSimulator
         EndpointInformation.EndpointDirection.Incoming, EndpointInformation.EndpointType.Bulk, 0x40));
       Endpoints.Add(new EndpointInformation(0x02,
         EndpointInformation.EndpointDirection.Outgoing, EndpointInformation.EndpointType.Bulk, 0x40));
+    }
+
+    public void OnShutdown()
+    {
+      //Nothing to do
     }
 
     public void OnControlRequestReceived(ControlRequestEventArgs e)

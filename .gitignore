@@ -161,3 +161,14 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+# WinAVR crap
+*.d
+*.o
+*.eep
+*.elf
+*.hex
+*.map
+*.lss
+*.sym
+*.zip

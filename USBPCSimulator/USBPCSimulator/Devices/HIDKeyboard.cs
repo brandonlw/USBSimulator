@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace USBSimulator
+namespace USBSimulator.Devices
 {
   public class HIDKeyboard : IUSBDevice
   {
@@ -324,6 +324,11 @@ namespace USBSimulator
       Endpoints = new List<EndpointInformation>();
       Endpoints.Add(new EndpointInformation(0x01,
         EndpointInformation.EndpointDirection.Incoming, EndpointInformation.EndpointType.Interrupt, 0x08));
+    }
+
+    public void OnShutdown()
+    {
+      //Nothing to do...
     }
 
     public void OnIncomingDataReceived(IncomingDataEventArgs e)

@@ -21,6 +21,10 @@ namespace USBSimulator
     //You should create and fill the Endpoints list above here.
     void OnInitialize(USBSimulatorDevice device);
 
+    //Called when shutting down.
+    //You should do any cleanup here.
+    void OnShutdown();
+
     //Called when the host is requesting a descriptor.
     //You can access the wValue and wIndex from the request.
     //It is your responsibility to:
