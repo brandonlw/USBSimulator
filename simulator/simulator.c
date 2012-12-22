@@ -419,8 +419,13 @@ void EVENT_USB_Device_ControlRequest(void)
 	//Based on the response, either:
 	//If we're handling this command:
 	bool outgoingRequest = handlingCommand;
-	handlingCommand |= ((receiveBuffer[3] & 0x01) > 0); //for outgoing data requests, we don't get a choice -- must handle it
-	if (handlingCommand)
+	handlingCommand |= (receiveBuffer[3] == 1); //for outgoing data requests, we don't get a choice -- must handle it
+	if (receiveBuffer[3] == 2)
+	{
+		//We should STALL this packet
+		Endpoint_StallTransaction();
+	}
+	else if (handlingCommand)
 	{
 		if (!outgoingRequest)
 			Endpoint_ClearSETUP();

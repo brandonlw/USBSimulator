@@ -13,6 +13,7 @@ namespace USBSimulator
     public int wIndex { get; set; }
     public int wLength { get; set; }
     public bool Ignore { get; set; }
+    public bool Stall { get; set; }
     public byte[] AttachedData { get; set; }
     public byte[] ReturnData { get; set; }
 

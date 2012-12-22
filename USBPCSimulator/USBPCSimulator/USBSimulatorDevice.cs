@@ -281,6 +281,10 @@ namespace USBSimulator
             {
               _Write(new byte[] { (byte)'U', 0x00 });
             }
+            else if (arg.Stall)
+            {
+              _Write(new byte[] { (byte)'U', 0x02 });
+            }
             else
             {
               var ret = new byte[2 + (arg.ReturnData != null ? arg.ReturnData.Length : 0)];
